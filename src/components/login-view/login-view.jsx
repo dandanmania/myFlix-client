@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import './login-view.scss'
+
 export function LoginView(props) {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -16,11 +18,11 @@ export function LoginView(props) {
             <label>
                 Username:
                 <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-            </label>
+            </label> <br />
             <label>
                 Password:
                 <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
-            </label>
+            </label> <br />
             <button type="submit" onClick={handleSubmit}>Submit</button>
         </form>
     );
