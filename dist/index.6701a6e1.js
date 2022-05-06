@@ -25215,17 +25215,9 @@ class MainView extends _reactDefault.default.Component {
     }
     render() {
         const { movies , selectedMovie , user , registeredUser  } = this.state;
+        //If there is no registered user, RegistrationView is rendered...
         if (!registeredUser) return(/*#__PURE__*/ _jsxRuntime.jsx(_registrationView.RegistrationView, {
             onRegister: (registeredUser1)=>this.onRegister(registeredUser1)
-            ,
-            __source: {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 51
-            },
-            __self: this
-        }));
-        if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
-            onLogIn: (user1)=>this.onLogIn(user1)
             ,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
@@ -25233,11 +25225,21 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }));
+        //If there is no user logged in, LoginView is rendered.
+        if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
+            onLogIn: (user1)=>this.onLogIn(user1)
+            ,
+            __source: {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 54
+            },
+            __self: this
+        }));
         if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 54
+                lineNumber: 56
             },
             __self: this
         }));
@@ -25245,7 +25247,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 57
+                lineNumber: 59
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -25255,7 +25257,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 59
+                    lineNumber: 61
                 },
                 __self: this
             }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -25265,7 +25267,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 60
+                        lineNumber: 62
                     },
                     __self: this
                 }, movie._id)
@@ -28649,7 +28651,7 @@ $RefreshReg$(_c, "RegistrationView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"48awh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8O7Hp","./registration-view.scss":"fr9ZP"}],"1tgq3":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","./registration-view.scss":"fr9ZP","@parcel/transformer-js/src/esmodule-helpers.js":"48awh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8O7Hp"}],"1tgq3":[function(require,module,exports) {
 var ReactIs = require('react-is');
 // By explicitly using `prop-types` you are opting into new development behavior.
 // http://fb.me/prop-types-in-prod
@@ -29401,7 +29403,7 @@ printWarning = function(text) {
 };
 module.exports = checkPropTypes;
 
-},{"./lib/ReactPropTypesSecret":"lYuBM","./lib/has":"9e9z2"}],"48awh":[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":"lYuBM","./lib/has":"9e9z2"}],"fr9ZP":[function() {},{}],"48awh":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -29553,7 +29555,7 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"u6JTA"}],"fr9ZP":[function() {},{}],"054li":[function(require,module,exports) {
+},{"react-refresh/runtime":"u6JTA"}],"054li":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$02dd = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -29675,7 +29677,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"48awh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8O7Hp","./login-view.scss":"lS4BK"}],"lS4BK":[function() {},{}],"6EiBJ":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","./login-view.scss":"lS4BK","@parcel/transformer-js/src/esmodule-helpers.js":"48awh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8O7Hp"}],"lS4BK":[function() {},{}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
