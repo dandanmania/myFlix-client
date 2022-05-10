@@ -25,7 +25,7 @@ export class MovieView extends React.Component{
                         <ListGroup.Item><img src={movie.ImagePath} /></ListGroup.Item>
                         <ListGroup.Item>Title: {movie.Title}</ListGroup.Item>
                         <ListGroup.Item>Description: {movie.Description}</ListGroup.Item>
-                        <ListGroup.Item><Button variant="primary" onClick={() => onBackClick(null) }>Back</Button></ListGroup.Item>
+                        <ListGroup.Item><Button variant="secondary" onClick={() => onBackClick(null) }>Back</Button></ListGroup.Item>
                     </ListGroup>
                 </Col>
             </Row>

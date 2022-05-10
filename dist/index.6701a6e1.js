@@ -25229,9 +25229,25 @@ class MainView extends _reactDefault.default.Component {
     render() {
         const { movies , selectedMovie , user , registeredUser  } = this.state;
         //If there is no registered user, RegistrationView is rendered...
-        //if (!registeredUser) return <RegistrationView onRegister={registeredUser => this.onRegister(registeredUser)} />;
+        if (!registeredUser) return(/*#__PURE__*/ _jsxRuntime.jsx(_registrationView.RegistrationView, {
+            onRegister: (registeredUser1)=>this.onRegister(registeredUser1)
+            ,
+            __source: {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 54
+            },
+            __self: this
+        }));
         //If there is no user logged in, LoginView is rendered.
-        //if (!user) return <LoginView onLogIn={user => this.onLogIn(user)} />;
+        if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
+            onLogIn: (user1)=>this.onLogIn(user1)
+            ,
+            __source: {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 56
+            },
+            __self: this
+        }));
         if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "main-view",
             __source: {
@@ -28751,6 +28767,7 @@ function RegistrationView(props) {
         __self: this,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
+                className: "mt-2",
                 controlId: "formUsername",
                 __source: {
                     fileName: "src/components/registration-view/registration-view.jsx",
@@ -28779,6 +28796,7 @@ function RegistrationView(props) {
                 ]
             }),
             /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
+                className: "mt-2",
                 controlId: "formPassword",
                 __source: {
                     fileName: "src/components/registration-view/registration-view.jsx",
@@ -28807,6 +28825,7 @@ function RegistrationView(props) {
                 ]
             }),
             /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
+                className: "mt-2",
                 controlId: "formEmail",
                 __source: {
                     fileName: "src/components/registration-view/registration-view.jsx",
@@ -28835,6 +28854,7 @@ function RegistrationView(props) {
                 ]
             }),
             /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
+                className: "mt-2",
                 controlId: "formBirthday",
                 __source: {
                     fileName: "src/components/registration-view/registration-view.jsx",
@@ -28863,7 +28883,8 @@ function RegistrationView(props) {
                 ]
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
-                variant: "primary",
+                className: "mt-2",
+                variant: "secondary",
                 type: "submit",
                 onClick: handleSubmit,
                 __source: {
@@ -28872,6 +28893,16 @@ function RegistrationView(props) {
                 },
                 __self: this,
                 children: "Submit"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                className: "mt-2",
+                variant: "link",
+                __source: {
+                    fileName: "src/components/registration-view/registration-view.jsx",
+                    lineNumber: 42
+                },
+                __self: this,
+                children: "Already Registered?"
             })
         ]
     }));
@@ -30511,6 +30542,7 @@ function LoginView(props) {
         __self: this,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
+                className: "mt-2",
                 controlId: "formUsername",
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
@@ -30538,15 +30570,8 @@ function LoginView(props) {
                     })
                 ]
             }),
-            " ",
-            /*#__PURE__*/ _jsxRuntime.jsx("br", {
-                __source: {
-                    fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 23
-                },
-                __self: this
-            }),
             /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
+                className: "mt-2",
                 controlId: "formPassword",
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
@@ -30575,7 +30600,8 @@ function LoginView(props) {
                 ]
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
-                variant: "primary",
+                className: "mt-2",
+                variant: "secondary",
                 type: "submit",
                 onClick: handleSubmit,
                 __source: {
@@ -30586,7 +30612,8 @@ function LoginView(props) {
                 children: "Submit"
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
-                variant: "secondary",
+                className: "mt-2",
+                variant: "link",
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
                     lineNumber: 31
@@ -30922,7 +30949,7 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                variant: "primary",
+                                variant: "secondary",
                                 onClick: ()=>onBackClick(null)
                                 ,
                                 __source: {
