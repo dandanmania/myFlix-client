@@ -12,6 +12,10 @@ body {
 input {
   margin: 0.25rem;
 }
+.fixed-height {
+  height: 14rem;
+}
+
 .my-flix {
   color: steelblue;
 }

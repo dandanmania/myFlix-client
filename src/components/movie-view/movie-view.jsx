@@ -1,4 +1,6 @@
 import React from 'react';
+import { Row, Col, Button, ListGroup } from 'react-bootstrap';
+import './movie-view.scss';
 
 export class MovieView extends React.Component{
 
@@ -17,20 +19,16 @@ export class MovieView extends React.Component{
     render() {
         const { movie, onBackClick } = this.props;
         return (
-            <div className="movie-view">
-                <div className='movie-poster'>
-                    <img src={movie.ImagePath} />
-                </div>
-                <div className='movie-title'>
-                    <span className='label'>Title: </span>
-                    <span className='value'>{movie.Title}</span>
-                </div>
-                <div className='movie-description'>
-                    <span className='label'>Description: </span>
-                    <span className='value'>{movie.Description}</span>
-                </div>
-                <button onClick={() => { onBackClick(null); } }>Back</button>
-            </div>
+            <Row className='justify-content-md-center'>
+                <Col>
+                    <ListGroup variant="flush">
+                        <ListGroup.Item><img src={movie.ImagePath} /></ListGroup.Item>
+                        <ListGroup.Item>Title: {movie.Title}</ListGroup.Item>
+                        <ListGroup.Item>Description: {movie.Description}</ListGroup.Item>
+                        <ListGroup.Item><Button variant="primary" onClick={() => onBackClick(null) }>Back</Button></ListGroup.Item>
+                    </ListGroup>
+                </Col>
+            </Row>
         );
     }
 }
