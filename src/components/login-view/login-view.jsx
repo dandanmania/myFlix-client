@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 import './login-view.scss'
 import { Card } from 'react-bootstrap';
@@ -12,8 +13,17 @@ export function LoginView(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(username, password);
-        //props.onRegistered(username);
+        axios.post('https://dandan-myflix.herokuapp.com/login', {
+            Username: username,
+            Password: password
+        })
+        .then(response => {
+            const data = response.data;
+            props.onLogIn(data);
+        })
+        .catch(e => {
+            console.log('No such user.')
+        })
     }
 
     return (
@@ -31,7 +41,7 @@ export function LoginView(props) {
                         <Form.Control type="password" placeholder="Enter Password" onChange={e => setPassword(e.target.value)} />
                     </Form.Group>
             
-                    <Button className="mt-4" variant="secondary" type="submit" onClick={handleSubmit}>Submit</Button>
+                    <Button className="mt-4" variant="secondary" type="submit" onClick={handleSubmit}>Log In</Button>
                     <Button className="mt-4" variant="link">Need to Register?</Button>
                 </Form>
             </Card.Body>
