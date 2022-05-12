@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -18,15 +19,13 @@ export class MainView extends React.Component {
     }
     
     componentDidMount(){
-        axios.get('https://dandan-myflix.herokuapp.com/movies')
-            .then(response => {
-                this.setState({
-                    movies: response.data
-                });
-            })
-            .catch(error => {
-                console.log(error);
+        let accessToken = localStorage.getItem('token');
+        if (accessToken !== null) {
+            this.setState({
+                user: localStorage.getItem('user')
             });
+            this.getMovies(accessToken);
+        }
     }
 
     setSelectedMovie(newSelectedMovie) {
@@ -52,6 +51,14 @@ export class MainView extends React.Component {
         this.getMovies(authData.token);
     }
 
+    onLogOut() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.setState({
+            user: null
+        });
+    }
+
     getMovies(token) {
         axios.get('https://dandan-myflix.herokuapp.com/movies', {
             headers: { Authorization: `Bearer ${token}`}
@@ -70,6 +77,12 @@ export class MainView extends React.Component {
     render() {
         const { movies, selectedMovie, user, registeredUser } = this.state;
 
+        if (!user) return <Row>
+            <Col>
+                <LoginView onLogIn={user => this.onLogIn(user)} />
+            </Col>
+        </Row>
+
         //If there is no user logged in, LoginView is rendered.
         if (!user) return <LoginView onLogIn={user => this.onLogIn(user)} />;
         
@@ -79,21 +92,27 @@ export class MainView extends React.Component {
         if (movies.length === 0) return <div className="main-view" />;
 
         return (
-            <Row className="main-view justify-content-md-center">
-                {selectedMovie
-                    ? (
-                        <Col md={8}>
-                            <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => {this.setSelectedMovie(newSelectedMovie); }} />
+            <Router>
+                <Row className="main-view justify-content-md-center">
+                    <Route exact path="/" render {() => {
+                        return movies.map(m => (
+                            <Col md={3} key={m._id}>
+                                NMovieCard movie={m} />
+                            </Col>
+                        ))
+                    }} />
+
+                    <Route exact path="/movies/:movieId" render={({ match, history }) => {
+                        return <Col md={8}>
+                            <MovieView movie={movies.find(m = m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
                         </Col>
-                    )
-                    : (
-                        movies.map(movie => (
-                            <Col md={3}>
-                                <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(movie); }} />
-                            </Col>))
-                    )
-                }
-            </Row>
+                    }} />
+
+                    <Col>
+                        <button onClick={() => { this.onLogOut()}}>Logout</button>
+                    </Col>
+                </Row>
+            </Router>
         );
     }
 }
