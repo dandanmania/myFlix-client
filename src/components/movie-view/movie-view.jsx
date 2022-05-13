@@ -26,12 +26,12 @@ export class MovieView extends React.Component{
                         <ListGroup.Item>Title: {movie.Title}</ListGroup.Item>
                         <ListGroup.Item>Description: {movie.Description}</ListGroup.Item>
                         <ListGroup.Item>
-                            <Link to={`/directors/${movie.Director.Name}`}>
+                            <Link to={`/directors/${movie.Director}`}>
                                 <Button variant="link">Director</Button>
                             </Link>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <Link to={`/genres/${movie.Genre.Name}`}>
+                            <Link to={`/genres/${movie.Genre}`}>
                                 <Button variant="link">Genre</Button>
                             </Link>
                         </ListGroup.Item>

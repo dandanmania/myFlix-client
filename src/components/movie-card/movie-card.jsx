@@ -15,8 +15,8 @@ export class MovieCard extends React.Component {
                 <Card.Img variant="top" src={movie.ImagePath} />
                 <Card.Body className="d-flex flex-column">
                     <Card.Title>{movie.Title}</Card.Title>
-                    <Link to={`/movies/${movie._id}`}>
-                        <Button className="mt-auto mr-auto" onClick={() => onMovieClick(movie)} variant="link">Open</Button>
+                    <Link className="mt-auto mr-auto" to={`/movies/${movie.Title}`}>
+                        <Button variant="link">Open</Button>
                     </Link>
                 </Card.Body>
             </Card>
