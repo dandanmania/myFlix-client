@@ -104,12 +104,12 @@ export class MainView extends React.Component {
 
                     <Route exact path="/movies/:movieTitle" render={({ match, history }) => {
                         return <Col md={8}>
-                            <MovieView movie={movies.find(m => m.title === match.params.movieTitle)} onBackClick={() => history.goBack()} />
+                            <MovieView movie={movies.find(m => m.Title === match.params.movieTitle)} onBackClick={() => history.goBack()} />
                         </Col>
                     }} />
 
                     <Col>
-                        <button onClick={() => { this.onLogOut()}}>Logout</button>
+                        <button onClick={() => { this.onLogOut() }}>Logout</button>
                     </Col>
                 </Row>
             </Router>

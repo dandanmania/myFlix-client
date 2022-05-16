@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Button, ListGroup } from 'react-bootstrap';
+import { Row, Col, Button, ListGroup, Link } from 'react-bootstrap';
 import './movie-view.scss';
 
 export class MovieView extends React.Component{

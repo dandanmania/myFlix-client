@@ -25336,7 +25336,7 @@ class MainView extends _reactDefault.default.Component {
                             return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                                 md: 8,
                                 children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
-                                    movie: movies.find((m)=>m.title === match.params.movieTitle
+                                    movie: movies.find((m)=>m.Title === match.params.movieTitle
                                     ),
                                     onBackClick: ()=>history.goBack()
                                 })
@@ -44398,7 +44398,7 @@ class MovieView extends _reactDefault.default.Component {
                                 lineNumber: 28
                             },
                             __self: this,
-                            children: /*#__PURE__*/ _jsxRuntime.jsx(Link, {
+                            children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Link, {
                                 to: `/directors/${movie.Director}`,
                                 __source: {
                                     fileName: "src/components/movie-view/movie-view.jsx",
@@ -44422,7 +44422,7 @@ class MovieView extends _reactDefault.default.Component {
                                 lineNumber: 33
                             },
                             __self: this,
-                            children: /*#__PURE__*/ _jsxRuntime.jsx(Link, {
+                            children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Link, {
                                 to: `/genres/${movie.Genre}`,
                                 __source: {
                                     fileName: "src/components/movie-view/movie-view.jsx",
