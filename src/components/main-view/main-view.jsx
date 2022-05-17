@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import {Row, Col, Container }from 'react-bootstrap';
+import { NavBar } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -75,12 +75,11 @@ export class MainView extends React.Component {
     }
 
     render() {
-        const { movies, selectedMovie, user, registeredUser } = this.state;
-        
-        //if (!registeredUser) return <RegistrationView onRegister={registeredUser => this.onRegister(registeredUser)} />;
+        const { movies, selectedMovie, user } = this.state;
 
         return (
             <Router>
+                <NavBar user={user} />
                 <Row className="main-view justify-content-md-center">
                     <Route exact path="/" render={() => {
                         //If there is no user logged in, LoginView is rendered.
@@ -90,7 +89,7 @@ export class MainView extends React.Component {
 
                         if (movies.length === 0) return <div className="main-view" />
                         return movies.map(m => (
-                            <Col md={3} key={m._id}>
+                            <Col className="m-1" md={3} key={m._id}>
                                 <MovieCard movie={m} />
                             </Col>
                         ))
@@ -109,7 +108,7 @@ export class MainView extends React.Component {
                         </Col>
                     }} />
 
-                    {/* <Col> <button onClick={() => { this.onLogOut() }}>Logout</button> </Col> */}
+
                 </Row>
             </Router>
         );

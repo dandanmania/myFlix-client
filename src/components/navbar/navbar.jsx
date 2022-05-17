@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar, Container, Button } from 'react-bootstrap';
 
 export function NavBar({user}) {
     const isAuth = () => {
@@ -18,7 +18,7 @@ export function NavBar({user}) {
         window.open("/", "_self");
     }
     return (
-        <Navbar className="main-nav" sticky="top" expand="lg" bg="dark" variant="dark">
+        <Navbar className="main-nav sticky-top" expand="lg" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand className="navbar-logo" href="/">myFlix</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
