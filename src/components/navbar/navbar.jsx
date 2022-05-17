@@ -2,6 +2,21 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 
 export function NavBar({user}) {
+    const isAuth = () => {
+        if(typeof window == 'undefined') {
+            return false;
+        }
+        if(localStorage.getItem("token")) {
+            return localStorage.getItem("token");
+        }
+        else{
+            return false;
+        }
+    }
+    const onLogOut = () => {
+        localStorage.clear();
+        window.open("/", "_self");
+    }
     return (
         <Navbar className="main-nav" sticky="top" expand="lg" bg="dark" variant="dark">
             <Container>
