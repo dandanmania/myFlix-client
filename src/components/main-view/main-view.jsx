@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -76,30 +76,31 @@ export class MainView extends React.Component {
 
     render() {
         const { movies, selectedMovie, user, registeredUser } = this.state;
-
-        if (!user) return <Row>
-            <Col>
-                <LoginView onLogIn={user => this.onLogIn(user)} />
-            </Col>
-        </Row>
-
-        //If there is no user logged in, LoginView is rendered.
-        if (!user) return <LoginView onLogIn={user => this.onLogIn(user)} />;
         
-        //If there is no registered user, RegistrationView is rendered...
         //if (!registeredUser) return <RegistrationView onRegister={registeredUser => this.onRegister(registeredUser)} />;
-        
-        if (movies.length === 0) return <div className="main-view" />;
 
         return (
             <Router>
                 <Row className="main-view justify-content-md-center">
                     <Route exact path="/" render={() => {
+                        //If there is no user logged in, LoginView is rendered.
+                        if (!user) return <Col>
+                            <LoginView onLogIn={user => this.onLogIn(user)} />
+                        </Col>
+
+                        if (movies.length === 0) return <div className="main-view" />
                         return movies.map(m => (
                             <Col md={3} key={m._id}>
                                 <MovieCard movie={m} />
                             </Col>
                         ))
+                    }} />
+
+                    <Route path="/register" render={() => {
+                        if (user) return <Redirect to="/" />
+                        return <Col>
+                            <RegistrationView />
+                        </Col>
                     }} />
 
                     <Route exact path="/movies/:movieTitle" render={({ match, history }) => {
@@ -108,9 +109,7 @@ export class MainView extends React.Component {
                         </Col>
                     }} />
 
-                    <Col>
-                        <button onClick={() => { this.onLogOut() }}>Logout</button>
-                    </Col>
+                    {/* <Col> <button onClick={() => { this.onLogOut() }}>Logout</button> </Col> */}
                 </Row>
             </Router>
         );
