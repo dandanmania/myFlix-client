@@ -7,6 +7,7 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { ProfileView } from '../profile-view/profile-view';
 
 export class MainView extends React.Component {
 
@@ -99,6 +100,13 @@ export class MainView extends React.Component {
                         if (user) return <Redirect to="/" />
                         return <Col>
                             <RegistrationView />
+                        </Col>
+                    }} />
+
+                    <Route path={`users/${user}`} render={({history}) => {
+                        if (!user) return <Redirect to ="/" />
+                        return <Col>
+                            <ProfileView user={user.Username} onBackClick={() => history.goBack()}/>
                         </Col>
                     }} />
 
