@@ -1,13 +1,15 @@
-import React from  'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import React, { useState } from  'react';
+import { Form, Button, Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { UserInfo } from './user-info';
 
-export function ProfileView() {
+export function ProfileView({user}, {email}){
+
     return(
         <div>
-            <UserInfo user={user.Username} email={user.Email}/>
+            <p>User: {user}</p>
+            <p>Email: {email}</p>
         </div>
     )
 }
