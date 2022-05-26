@@ -32,7 +32,7 @@ export function RegistrationView(props) {
     }
 
     return (
-        <Card className="mt-5">
+        <Card className="m-5">
             <Card.Title className="m-3 pl-1">Register</Card.Title>
             <Card.Body>
                 <Form>

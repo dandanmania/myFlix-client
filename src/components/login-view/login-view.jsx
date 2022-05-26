@@ -27,7 +27,7 @@ export function LoginView(props) {
     }
 
     return (
-        <Card className="mt-5">
+        <Card className="m-5">
             <Card.Title className="m-3 pl-1">Login</Card.Title>
             <Card.Body>
                 <Form>
