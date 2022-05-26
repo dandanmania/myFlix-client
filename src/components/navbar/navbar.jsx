@@ -2,6 +2,11 @@ import React from 'react';
 import { Nav, Navbar, Container, Button } from 'react-bootstrap';
 
 export function NavBar({user}) {
+    const onLogOut = () => {
+        localStorage.clear();
+        window.open("/", "_self");
+    }
+
     const isAuth = () => {
         if(typeof window == 'undefined') {
             return false;
@@ -13,10 +18,7 @@ export function NavBar({user}) {
             return false;
         }
     }
-    const onLogOut = () => {
-        localStorage.clear();
-        window.open("/", "_self");
-    }
+
     return (
         <Navbar className="main-nav sticky-top" expand="lg" bg="dark" variant="dark">
             <Container>
@@ -25,10 +27,10 @@ export function NavBar({user}) {
                 <Navbar.Collapse id="responseive-navbar-nav">
                     <Nav className="ml-auto">
                         {isAuth() && (
-                            <Nav.Link href={`users/${user}`}>{user}</Nav.Link>
+                            <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
                         )}
                         {isAuth() && (
-                            <Button variant="link" onClick={() => { this.onLogOut() }}>Logout</Button>
+                            <Button variant="link" onClick={() => onLogOut()}>Logout</Button>
                         )}
                         {!isAuth() && (
                             <Nav.Link href="/">Sign-in</Nav.Link>
