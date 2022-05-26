@@ -1,5 +1,6 @@
 import React from 'react';
-import { Row, Col, Button, ListGroup, Link } from 'react-bootstrap';
+import { Row, Col, Button, ListGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
 export class MovieView extends React.Component{
@@ -31,7 +32,7 @@ export class MovieView extends React.Component{
                             </Link>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <Link to={`/genres/${movie.Genre}`}>
+                            <Link to={`/genre/${movie.Genre}`}>
                                 <Button variant="link">Genre</Button>
                             </Link>
                         </ListGroup.Item>
