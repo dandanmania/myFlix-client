@@ -1,10 +1,10 @@
-import React from  'react';
+import React, { useState } from  'react';
 
-export function UserInfo({ username, email }) {
+export function UserInfo({user}) {
     return(
         <>
-            <p>User: {username}</p>
-            <p>Email: {email}</p>
+            <p>User: {user}</p>
+            <p>Email:</p>
         </>
     )
 }
