@@ -8,6 +8,8 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { ProfileView } from '../profile-view/profile-view';
+import { GenreView } from '../genre-view/genre-view';
+import { DirectorView } from '../director-view/director-view';
 
 export class MainView extends React.Component {
 
@@ -23,7 +25,8 @@ export class MainView extends React.Component {
         let accessToken = localStorage.getItem('token');
         if (accessToken !== null) {
             this.setState({
-                user: localStorage.getItem('user')
+                user: localStorage.getItem('user'),
+                email: localStorage.getItem('email')
             });
             this.getMovies(accessToken);
         }
@@ -44,39 +47,56 @@ export class MainView extends React.Component {
     onLogIn(authData) {
         console.log(authData);
         this.setState({
-            user: authData.user.Username
+            user: authData.user.Username,
+            email: authData.user.Email
         });
 
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
+        localStorage.setItem('email', authData.user.Email);
         this.getMovies(authData.token);
-    }
+        }
 
     onLogOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        localStorage.removeItem('email');
         this.setState({
-            user: null
+            user: null,
+            email: null
         });
     }
 
     getMovies(token) {
-        axios.get('https://dandan-myflix.herokuapp.com/movies', {
+        let movieLink = "https://dandan-myflix.herokuapp.com/movies"
+        let directorsLink = "https://dandan-myflix.herokuapp.com/directors"
+        let genreLink = "https://dandan-myflix.herokuapp.com/genre"
+
+        const requestMovies = axios.get(movieLink, {
             headers: { Authorization: `Bearer ${token}`}
-        })
-        .then(response => {
-            //Assign the result to the state
+        });
+        const requestDirectors = axios.get(directorsLink, {
+            headers: { Authorization: `Bearer ${token}`}
+        });
+        const requestGenres = axios.get(genreLink, {
+            headers: { Authorization: `Bearer ${token}`}
+        });
+
+        Promise.all([requestMovies, requestDirectors, requestGenres])
+        .then(axios.spread((moviesResponse, directorsResponse, genresResponse) => {
             this.setState({
-                movies: response.data
+              movies: moviesResponse.data,
+              directors: directorsResponse.data,
+              genres: genresResponse.data
             });
-        })
-        .catch(function (error) {
-            console.log(error);
+        })).catch(function(error) {
+            console.log(error)
         })
     }
 
+
     render() {
-        const { movies, selectedMovie, user } = this.state;
+        const { movies, directors, genres, user, email } = this.state;
 
         return (
             <Router>
@@ -103,10 +123,10 @@ export class MainView extends React.Component {
                         </Col>
                     }} />
 
-                    <Route path={`users/${user}`} render={({history}) => {
+                    <Route path={`/users/${user}`} render={({history}) => {
                         if (!user) return <Redirect to ="/" />
                         return <Col>
-                            <ProfileView user={user.Username} onBackClick={() => history.goBack()}/>
+                            <ProfileView user={user} email={email} />
                         </Col>
                     }} />
 
@@ -116,7 +136,17 @@ export class MainView extends React.Component {
                         </Col>
                     }} />
 
+                    <Route exact path="/directors/:director" render={({ match, history }) => {
+                        return <Col md={8}>
+                            <DirectorView director={directors.find(m => m._id === match.params.director)} onBackClick={() => history.goBack()} />
+                        </Col>
+                    }} />
 
+                    <Route exact path="/genre/:genre" render={({ match, history }) => {
+                        return <Col md={8}>
+                            <GenreView genre={genres.find(m => m._id === match.params.genre)} onBackClick={() => history.goBack()} />
+                        </Col>
+                    }} />
                 </Row>
             </Router>
         );
