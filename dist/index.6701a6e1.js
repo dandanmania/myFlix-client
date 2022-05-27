@@ -25210,7 +25210,8 @@ class MainView extends _reactDefault.default.Component {
         if (accessToken !== null) {
             this.setState({
                 user: localStorage.getItem('user'),
-                email: localStorage.getItem('email')
+                email: localStorage.getItem('email'),
+                favoriteMovies: localStorage.getItem('favoriteMovies')
             });
             this.getMovies(accessToken);
         }
@@ -25229,20 +25230,24 @@ class MainView extends _reactDefault.default.Component {
         console.log(authData);
         this.setState({
             user: authData.user.Username,
-            email: authData.user.Email
+            email: authData.user.Email,
+            favoriteMovies: authData.user.FavoriteMovies
         });
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
         localStorage.setItem('email', authData.user.Email);
+        localStorage.setItem('favoriteMovies', authData.user.FavoriteMovies);
         this.getMovies(authData.token);
     }
     onLogOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         localStorage.removeItem('email');
+        localStorage.removeItem('favoriteMovies');
         this.setState({
             user: null,
-            email: null
+            email: null,
+            favoriteMovies: null
         });
     }
     getMovies(token) {
@@ -25283,7 +25288,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 102
+                lineNumber: 107
             },
             __self: this,
             children: [
@@ -25291,7 +25296,7 @@ class MainView extends _reactDefault.default.Component {
                     user: user,
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 103
+                        lineNumber: 108
                     },
                     __self: this
                 }),
@@ -25299,7 +25304,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view justify-content-md-center",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 104
+                        lineNumber: 109
                     },
                     __self: this,
                     children: [
@@ -25327,7 +25332,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 105
+                                lineNumber: 110
                             },
                             __self: this
                         }),
@@ -25344,7 +25349,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 119
+                                lineNumber: 124
                             },
                             __self: this
                         }),
@@ -25363,7 +25368,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 126
+                                lineNumber: 131
                             },
                             __self: this
                         }),
@@ -25382,7 +25387,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 133
+                                lineNumber: 138
                             },
                             __self: this
                         }),
@@ -25401,7 +25406,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 139
+                                lineNumber: 144
                             },
                             __self: this
                         }),
@@ -25420,7 +25425,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 145
+                                lineNumber: 150
                             },
                             __self: this
                         })
@@ -44690,7 +44695,7 @@ var _reactRouterDom = require("react-router-dom");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _userInfo = require("./user-info");
-function ProfileView({ user  }, { email  }) {
+function ProfileView({ user , email , favoriteMovies  }) {
     return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
@@ -44719,6 +44724,14 @@ function ProfileView({ user  }, { email  }) {
                     "Email: ",
                     email
                 ]
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+                __source: {
+                    fileName: "src/components/profile-view/profile-view.jsx",
+                    lineNumber: 13
+                },
+                __self: this,
+                children: "Favorite Movies"
             })
         ]
     }));
