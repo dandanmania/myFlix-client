@@ -26,7 +26,8 @@ export class MainView extends React.Component {
         if (accessToken !== null) {
             this.setState({
                 user: localStorage.getItem('user'),
-                email: localStorage.getItem('email')
+                email: localStorage.getItem('email'),
+                favoriteMovies: localStorage.getItem('favoriteMovies')
             });
             this.getMovies(accessToken);
         }
@@ -48,12 +49,14 @@ export class MainView extends React.Component {
         console.log(authData);
         this.setState({
             user: authData.user.Username,
-            email: authData.user.Email
+            email: authData.user.Email,
+            favoriteMovies: authData.user.FavoriteMovies
         });
 
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
         localStorage.setItem('email', authData.user.Email);
+        localStorage.setItem('favoriteMovies', authData.user.FavoriteMovies)
         this.getMovies(authData.token);
         }
 
@@ -61,9 +64,11 @@ export class MainView extends React.Component {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         localStorage.removeItem('email');
+        localStorage.removeItem('favoriteMovies');
         this.setState({
             user: null,
-            email: null
+            email: null,
+            favoriteMovies: null
         });
     }
 
