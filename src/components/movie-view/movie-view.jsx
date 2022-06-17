@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { Row, Col, Button, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -15,6 +16,19 @@ export class MovieView extends React.Component{
 
     componentWillUnmount() {
         document.removeEventListener('keypress', this.keypressCallback);
+    }
+
+    addFavorite({movie}) {
+        const user = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        
+        axios.post(`https://dandan-myflix.herokuapp.com/users/${user}/movies/${movie._id}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(response => {
+            alert('Movie added to your favorites!')
+        }).catch(e => {
+            console.log('Error adding favorites.')
+        })
     }
 
     render() {
@@ -35,6 +49,9 @@ export class MovieView extends React.Component{
                             <Link to={`/genre/${movie.Genre}`}>
                                 <Button variant="link">Genre</Button>
                             </Link>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Button onClick={() => this.addFavorite({movie})}>Add to Favorites</Button>
                         </ListGroup.Item>
                         <ListGroup.Item><Button variant="secondary" onClick={() => onBackClick() }>Back</Button></ListGroup.Item>
                     </ListGroup>
