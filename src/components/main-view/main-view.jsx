@@ -10,6 +10,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
+import moviesSplitted from '../profile-view/favorite-movies'
 
 export class MainView extends React.Component {
 
@@ -101,7 +102,7 @@ export class MainView extends React.Component {
 
 
     render() {
-        const { movies, directors, genres, user, email } = this.state;
+        const { movies, directors, genres, user, email, favoriteMovies } = this.state;
 
         return (
             <Router>
@@ -131,7 +132,7 @@ export class MainView extends React.Component {
                     <Route path={`/users/${user}`} render={({history}) => {
                         if (!user) return <Redirect to ="/" />
                         return <Col>
-                            <ProfileView user={user} email={email} />
+                            <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()} />
                         </Col>
                     }} />
 
