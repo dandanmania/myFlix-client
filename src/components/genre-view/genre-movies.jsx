@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Button, ListGroup, Link } from 'react-bootstrap';
 
-export class GenreView extends React.Component{
+export class DirectorView extends React.Component{
 
     keypressCallback(event) {
         console.log(event.key);
@@ -24,7 +24,7 @@ export class GenreView extends React.Component{
                         <ListGroup.Item><img src={genre.ImagePath} /></ListGroup.Item>
                         <ListGroup.Item>Name: {genre.Name}</ListGroup.Item>
                         <ListGroup.Item>Description: {genre.Description}</ListGroup.Item>
-                        <ListGroup.Item>Movies: {JSON.stringify(genre.Movies)}</ListGroup.Item>
+                        <ListGroup.Item>Movies: {genre.Movies[0]}</ListGroup.Item>
                         <ListGroup.Item><Button variant="secondary" onClick={() => onBackClick() }>Back</Button></ListGroup.Item>
                     </ListGroup>
                 </Col>
