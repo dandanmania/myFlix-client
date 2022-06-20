@@ -1,9 +1,7 @@
 import React from "react";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import { MovieCard } from "../movie-card/movie-card";
 
 export function FavoriteMovies(props) {
 
