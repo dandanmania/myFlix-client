@@ -10,7 +10,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
-import moviesSplitted from '../profile-view/favorite-movies'
+import { UpdateUser } from '../profile-view/update-user';
 
 export class MainView extends React.Component {
 
@@ -136,15 +136,23 @@ export class MainView extends React.Component {
                         </Col>
                     }} />
 
-                    <Route exact path="/movies/:movieTitle" render={({ match, history }) => {
+<                   Route path={`/users/${user}/update`} render={({history}) => {
+                        if (!user) return <Redirect to ="/" />
+                        return <Col>
+                            <UpdateUser user={user} onBackClick={() => history.goBack()} />
+                        </Col>
+                    }} />
+
+                    <Route exact path="/movies/:movieID" render={({ match, history }) => {
                         return <Col md={8}>
-                            <MovieView movie={movies.find(m => m.Title === match.params.movieTitle)} onBackClick={() => history.goBack()} />
+                            <MovieView movie={movies.find(m => m._id === match.params.movieID)} onBackClick={() => history.goBack()} />
                         </Col>
                     }} />
 
                     <Route exact path="/directors/:director" render={({ match, history }) => {
+                        let findDirector = directors.find(m => m._id === match.params.director);
                         return <Col md={8}>
-                            <DirectorView director={directors.find(m => m._id === match.params.director)} onBackClick={() => history.goBack()} />
+                            <DirectorView director={findDirector} onBackClick={() => history.goBack()} />
                         </Col>
                     }} />
 

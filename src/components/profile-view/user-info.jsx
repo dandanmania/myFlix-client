@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { DeleteUser } from './delete-user';
 
 export function UserInfo({ user, email }) {
@@ -12,7 +13,7 @@ export function UserInfo({ user, email }) {
                         User: {user} <br />
                         Email: {email}
                     </Card.Text>
-                    <Button>Update User Info</Button>
+                    <Link to={`/users/${user}/update`}><Button>Update User Info</Button></Link>
                     <DeleteUser />
                 </Card.Body>
             </Card>
