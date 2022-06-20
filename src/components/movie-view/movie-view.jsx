@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import './movie-view.scss';
 
 export class MovieView extends React.Component{
-
     keypressCallback(event) {
         console.log(event.key);
     }
@@ -41,7 +40,7 @@ export class MovieView extends React.Component{
                         <ListGroup.Item>Title: {movie.Title}</ListGroup.Item>
                         <ListGroup.Item>Description: {movie.Description}</ListGroup.Item>
                         <ListGroup.Item>
-                            <Link to={`/directors/${movie.Director}`}>
+                            <Link to={`/directors/${movie.Director[0]}`}>
                                 <Button variant="link">Director</Button>
                             </Link>
                         </ListGroup.Item>
