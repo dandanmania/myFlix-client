@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import './registration-view.scss'
 import { Card } from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export function RegistrationView(props) {
     const [ username, setUsername ] = useState('');
@@ -102,7 +103,7 @@ export function RegistrationView(props) {
                         {values.birthdayErr && <p>{values.birthdayErr}</p>}    
                     </Form.Group>
                     <Button className="mt-4" variant="secondary" type="submit" onClick={handleSubmit}>Submit</Button>
-                    <Button className="mt-4" variant="link">Already Registered?</Button>
+                    <Link to={`/`}><Button className="mt-4" variant="link">Already Registered?</Button></Link>
                 </Form>
             </Card.Body>
         </Card>
