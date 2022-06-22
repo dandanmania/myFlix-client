@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect} from "react-router-dom";
-import {Row, Col, Container }from 'react-bootstrap';
+import {Row, Col }from 'react-bootstrap';
 import { NavBar } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
@@ -145,20 +145,20 @@ export class MainView extends React.Component {
 
                     <Route exact path="/movies/:movieID" render={({ match, history }) => {
                         return <Col md={8}>
-                            <MovieView movie={movies.find(m => m._id === match.params.movieID)} onBackClick={() => history.goBack()} />
+                            <MovieView movie={movies.find(m => m._id === match.params.movieID)} director={directors} genre={genres} onBackClick={() => history.goBack()} />
                         </Col>
                     }} />
 
                     <Route exact path="/directors/:director" render={({ match, history }) => {
                         let findDirector = directors.find(m => m._id === match.params.director);
                         return <Col md={8}>
-                            <DirectorView director={findDirector} onBackClick={() => history.goBack()} />
+                            <DirectorView movie={movies} director={findDirector} onBackClick={() => history.goBack()} />
                         </Col>
                     }} />
 
                     <Route exact path="/genre/:genre" render={({ match, history }) => {
                         return <Col md={8}>
-                            <GenreView genre={genres.find(m => m._id === match.params.genre)} onBackClick={() => history.goBack()} />
+                            <GenreView movie={movies} genre={genres.find(m => m._id === match.params.genre)} onBackClick={() => history.goBack()} />
                         </Col>
                     }} />
                 </Row>
