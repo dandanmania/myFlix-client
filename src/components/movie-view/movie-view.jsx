@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React from 'react';
 import { Row, Col, Button, ListGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { MovieDirectorLink } from './movie-director-link';
+import { MovieGenreLink } from './movie-genre-link';
 import './movie-view.scss';
 
 export class MovieView extends React.Component{
@@ -21,7 +22,7 @@ export class MovieView extends React.Component{
         const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         
-        axios.post(`https://dandan-myflix.herokuapp.com/users/${user}/movies/${movie._id}`, {
+        axios.post(`https://dandan-myflix.herokuapp.com/users/${user}/movies/${movie._id}`, {}, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(response => {
             alert('Movie added to your favorites!')
@@ -31,7 +32,7 @@ export class MovieView extends React.Component{
     }
 
     render() {
-        const { movie, onBackClick } = this.props;
+        const { movie, director, genre, onBackClick } = this.props;
         return (
             <Row className='justify-content-md-center'>
                 <Col>
@@ -40,14 +41,10 @@ export class MovieView extends React.Component{
                         <ListGroup.Item>Title: {movie.Title}</ListGroup.Item>
                         <ListGroup.Item>Description: {movie.Description}</ListGroup.Item>
                         <ListGroup.Item>
-                            <Link to={`/directors/${movie.Director[0]}`}>
-                                <Button variant="link">Director</Button>
-                            </Link>
+                            Director: <MovieDirectorLink movie={movie} director={director} />
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <Link to={`/genre/${movie.Genre}`}>
-                                <Button variant="link">Genre</Button>
-                            </Link>
+                            Genre: <MovieGenreLink movie={movie} genre={genre} />
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Button onClick={() => this.addFavorite({movie})}>Add to Favorites</Button>

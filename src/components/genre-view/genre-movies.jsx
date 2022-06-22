@@ -1,34 +1,31 @@
-import React from 'react';
-import { Row, Col, Button, ListGroup, Link } from 'react-bootstrap';
+import React from "react";
+import { Button, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export class DirectorView extends React.Component{
+export function GenreMovies(props) {
+    const {movies, genre} = props;
 
-    keypressCallback(event) {
-        console.log(event.key);
-    }
-
-    componentDidMount() {
-        document.addEventListener('keypress', this.keypressCallback);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener('keypress', this.keypressCallback);
-    }
-
-    render() {
-        const { genre, onBackClick } = this.props;
+    const filteredMovies = movies.filter((movie) => {
+        return genre.Movies.includes(movie._id)
+    })
         return (
-            <Row className='justify-content-md-center'>
-                <Col>
-                    <ListGroup variant="flush">
-                        <ListGroup.Item><img src={genre.ImagePath} /></ListGroup.Item>
-                        <ListGroup.Item>Name: {genre.Name}</ListGroup.Item>
-                        <ListGroup.Item>Description: {genre.Description}</ListGroup.Item>
-                        <ListGroup.Item>Movies: {genre.Movies[0]}</ListGroup.Item>
-                        <ListGroup.Item><Button variant="secondary" onClick={() => onBackClick() }>Back</Button></ListGroup.Item>
-                    </ListGroup>
-                </Col>
-            </Row>
-        );
+            <>
+            {console.log(genre)}
+            {filteredMovies.length === 0 ? (
+                <p>There are no movies here</p>
+            ) : (
+                filteredMovies.map((movie) => {
+                    return (
+                        <>
+                            <Col className="m-1">
+                                <Link className="ml-2 mr-auto" to={`/movies/${movie._id}`}>
+                                    <Button variant="link">{movie.Title}</Button>
+                                </Link>
+                            </Col>
+                        </>                
+                        )
+                    })
+                )}
+            </>
+            )
     }
-}
