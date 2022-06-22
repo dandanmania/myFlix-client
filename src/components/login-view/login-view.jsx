@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
-import {Button, Alert} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import axios from 'axios';
 
 import './login-view.scss'
