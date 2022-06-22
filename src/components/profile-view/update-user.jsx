@@ -60,12 +60,13 @@ export function UpdateUser(props) {
             Password: password,
             Email: email,
             Birthday: birthday,
-        }, { headers: `Bearer ${token}`})
+        }, { headers: { Authorization: `Bearer ${token}`}})
         .then(response => {
+            localStorage.setItem("user", username);
             const data = response.data;
             console.log(data);
             alert('Update successful!');
-            window.open('/users/:username', '_self');
+            window.open(`/users/${username}`, '_self');
         })
         .catch(e => {
             console.log('Error updating the user');
