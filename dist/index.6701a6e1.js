@@ -45641,7 +45641,7 @@ class GenreView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"48awh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8O7Hp","./genre-movies":"fXCtw"}],"fXCtw":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./genre-movies":"fXCtw","@parcel/transformer-js/src/esmodule-helpers.js":"48awh","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8O7Hp"}],"fXCtw":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$6511 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
