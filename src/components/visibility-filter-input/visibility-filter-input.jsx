@@ -5,13 +5,18 @@ import Form from 'react-bootstrap/Form';
 
 import { setFilter } from "../../actions/actions";
 
+import './visibility-filter-input.scss'
+import { Card } from "react-bootstrap";
 
 function VisibilityFilterInput(props) {
-    return <Form.Control 
+    return <Card className="mt-2 px-2 pb-2 searchcolor">
+        <Form.Control 
         onChange={e => props.setFilter(e.target.value)}
         value={props.visibilityFilter}
-        placeholder="filter"
+        placeholder="Filter Movies"
+        className="mt-2"
     />
+    </Card>
 }
 
 export default connect(
