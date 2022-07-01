@@ -16,3 +16,7 @@ Access the web app here:
 - Parcel
 - PropTypes
 - Sass
+
+### Current Issues
+
+- Refreshing in any of the Movie, Director, Genre Views will likely only result in an error (mainly due to how the routing is set up).
