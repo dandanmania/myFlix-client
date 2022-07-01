@@ -5,7 +5,6 @@ import { Row, Col }from 'react-bootstrap';
 import { NavBar } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
-import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { GenreView } from '../genre-view/genre-view';
@@ -127,7 +126,7 @@ class MainView extends React.Component {
                         </Col>
                     }} />
 
-                    <Route path={`/users/${user}`} render={({history}) => {
+                    <Route exact path={`/users/${user}`} render={({history}) => {
                         if (!user) return <Redirect to ="/" />
                         return <Col>
                             <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()} />
