@@ -1,15 +1,23 @@
 import React, { useState } from  'react';
-import { Container, Row } from 'react-bootstrap';
+import { Alert, Container, Row } from 'react-bootstrap';
 import axios from 'axios';
 import { FavoriteMovies } from './favorite-movies';
 import { useEffect } from 'react';
 import { UserInfo } from './user-info';
+
+import './profile-view.scss';
 
 export function ProfileView(props){
     const [user, setUser] = useState(props.user);
     const [email, setEmail] = useState(props.user.Email);
     const [movies, setMovies] = useState(props.movies);
     const [favoriteMovies, setFavoriteMovies] = useState([]);
+
+    const [isActive, setActive] = useState('false');
+    const handleToggle = () => {
+        setActive(!isActive);
+    }
+    
     const loggedUser = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
@@ -38,7 +46,10 @@ export function ProfileView(props){
 
     return(
         <Container>
-            <Row className='ml-2'>
+            <Row className="position-absolute justify-content-center invisible" id="alertrow">
+                <Alert className='mt-2' variant='info'>Movie has been removed from your favorites.</Alert>
+            </Row>
+            <Row className='ml-2 justify-content-center position-relative'>
                 <UserInfo user={user.Username} email={email} favoriteMovies={favoriteMovies}/>
             </Row>
             <h2>Favorite Movies</h2>

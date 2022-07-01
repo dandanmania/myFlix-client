@@ -1,4 +1,10 @@
-
+#registrationsuccess, #registrationfail {
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
 body {
   color: steelblue;
 }
@@ -6,10 +12,33 @@ body {
 input {
   margin: 0.25rem;
 }
+#addrow, #addfail {
+  z-index: 10 !important;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+#alertrow {
+  z-index: 5;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+#updatealert, #updatefail {
+  z-index: 5;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
 .fixed-height {
   height: 14rem;
 }
-
+.searchcolor {
+  background-color: rgba(191, 166, 83, 0.65) !important;
+}
 .my-flix {
   color: steelblue;
 }

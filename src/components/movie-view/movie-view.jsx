@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React from 'react';
-import { Row, Col, Button, ListGroup } from 'react-bootstrap';
+import './movie-view.scss';
+import { Row, Col, Button, ListGroup, Alert } from 'react-bootstrap';
 import { MovieDirectorLink } from './movie-director-link';
 import { MovieGenreLink } from './movie-genre-link';
-import './movie-view.scss';
 
 export class MovieView extends React.Component{
     keypressCallback(event) {
@@ -25,8 +25,17 @@ export class MovieView extends React.Component{
         axios.post(`https://dandan-myflix.herokuapp.com/users/${user}/movies/${movie._id}`, {}, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(response => {
-            alert('Movie added to your favorites!')
+            var invisibility = document.getElementById('addrow');
+            invisibility.classList.remove('invisible'); 
+            setTimeout(function() {
+                invisibility.classList.add('invisible');
+            }, 5000);
         }).catch(e => {
+            var invisibility = document.getElementById('addfail');
+            invisibility.classList.remove('invisible'); 
+            setTimeout(function() {
+                invisibility.classList.add('invisible');
+            }, 5000);
             console.log('Error adding favorites.')
         })
     }
@@ -35,6 +44,12 @@ export class MovieView extends React.Component{
         const { movie, director, genre, onBackClick } = this.props;
         return (
             <Row className='justify-content-md-center'>
+                <Row className='position-absolute justify-content-center invisible' id='addrow'>
+                    <Alert className='mt-2' variant='info'>Movie has been added to your favorites.</Alert>
+                </Row>
+                <Row className='position-absolute justify-content-center invisible' id='addfail'>
+                    <Alert className='mt-2' variant='danger'>Failed to add to your favorites.</Alert>
+                </Row>
                 <Col>
                     <ListGroup variant="flush">
                         <ListGroup.Item><img src={movie.ImagePath} /></ListGroup.Item>

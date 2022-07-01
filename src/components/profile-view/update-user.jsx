@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Card } from 'react-bootstrap';
+import { Row, Card, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './update-user.scss';
 
 export function UpdateUser(props) {
     const {user} = props;
@@ -65,18 +66,33 @@ export function UpdateUser(props) {
             localStorage.setItem("user", username);
             const data = response.data;
             console.log(data);
-            alert('Update successful!');
-            window.open(`/users/${username}`, '_self');
+            var invisibility = document.getElementById('updatealert');
+            invisibility.classList.remove('invisible'); 
+            setTimeout(function() {
+                window.open(`/users/${user}`, '_self')
+            }, 3000);
         })
         .catch(e => {
             console.log('Error updating the user');
-            alert('Unable to update.');
+            console.error(error);
+            var invisibility = document.getElementById('updatefail');
+            invisibility.classList.remove('invisible'); 
+            setTimeout(function() {
+                invisibility.classList.add('invisible')
+            }, 9000);
         })
     }
     }
 
     return (
-        <Card className="m-5">
+        <>
+            <Row className="position-absolute justify-content-center invisible" id="updatealert">
+                <Alert className='mt-2' variant='primary'>User has been updated.</Alert>
+            </Row>
+            <Row className="position-absolute justify-content-center invisible" id="updatefail">
+                <Alert className='mt-2' variant='danger'>Update has failed.</Alert>
+            </Row>
+            <Card className="m-5">
             <Card.Title className="m-3 pl-1">Edit Profile</Card.Title>
             <Card.Body>
                 <Form>
@@ -108,6 +124,7 @@ export function UpdateUser(props) {
                 </Form>
             </Card.Body>
         </Card>
+        </>
     );
 }
 
