@@ -16,6 +16,7 @@ Access the web app here:
 - Parcel
 - PropTypes
 - Sass
+- Axios
 
 ### Current Issues
 
