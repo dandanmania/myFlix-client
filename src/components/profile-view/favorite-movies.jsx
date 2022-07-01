@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export function FavoriteMovies(props) {
-
     const {movies, favoriteMovies, loggedUser, token} = props;
 
     const filteredFavorites = movies.filter((movie) => {
@@ -15,8 +14,11 @@ export function FavoriteMovies(props) {
         axios.delete(`https://dandan-myflix.herokuapp.com/users/${loggedUser.Username}/movies/${movieId}`, {
             headers: { Authorization: `Bearer ${token}`}
         }).then(() => {
-            alert('The movie has been removed from your favorites')
-            window.open(`/users/${loggedUser.Username}`, '_self')
+            var invisibility = document.getElementById('alertrow');
+            invisibility.classList.remove('invisible'); 
+            setTimeout(function() {
+                window.open(`/users/${loggedUser.Username}`, '_self')
+            }, 3000);
         }).catch(e => {
             console.error(error)
         })
@@ -38,7 +40,7 @@ export function FavoriteMovies(props) {
                                 <Link className="ml-2 mr-auto" to={`/movies/${movie._id}`}>
                                     <Button variant="link">Open</Button>
                                 </Link>
-                                <Button className="mr-4 btn-danger" onClick={ () => deleteMovie(movie._id)}>Delete Favorite</Button>
+                                <Button className="mr-4 btn-danger" onClick={() => deleteMovie(movie._id) }>Delete Favorite</Button>
                                 </Row>
                                 </Card.Body>
                             </Card>

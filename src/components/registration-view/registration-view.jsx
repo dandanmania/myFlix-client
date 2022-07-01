@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import './registration-view.scss'
-import { Card } from 'react-bootstrap';
+import { Card, Row, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -64,17 +64,31 @@ export function RegistrationView(props) {
         .then(response => {
             const data = response.data;
             console.log(data);
-            alert('Registration successful! Please Login!');
-            window.open('/', '_self');
+            var invisibility = document.getElementById('registrationsuccess');
+            invisibility.classList.remove('invisible'); 
+            setTimeout(function() {
+                window.open(`/`, '_self')
+            }, 3000);
         })
         .catch(e => {
             console.log('Error registering the user');
-            alert('Unable to register.');
+            var invisibility = document.getElementById('registrationsuccess');
+            invisibility.classList.remove('invisible'); 
+            setTimeout(function() {
+                invisibility,classList.add('invisible');
+            }, 3000);
         })
     }
     }
 
     return (
+        <>
+        <Row className='position-absolute justify-content-center invisible' id='registrationsuccess'>
+            <Alert className='mt-2' variant='primary'>Registration successful! Please Log In!</Alert>
+        </Row>
+        <Row className='position-absolute justify-content-center invisible' id='registrationfail'>
+            <Alert className='mt-2' variant='danger'>Error registering the user.</Alert>
+        </Row>
         <Card className="m-5">
             <Card.Title className="m-3 pl-1">Register</Card.Title>
             <Card.Body>
@@ -107,6 +121,7 @@ export function RegistrationView(props) {
                 </Form>
             </Card.Body>
         </Card>
+        </>
     );
 }
 
