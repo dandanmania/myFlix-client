@@ -16,12 +16,12 @@ export function DeleteUser() {
         }).then(response => {
             const data = response.data;
             console.log(data);
-            alert('Your account has been deleted');
+            alert('Your account has been deleted.');
             localStorage.removeItem('user');
             localStorage.removeItem('token');
             window.open('/', '_self');
         }).catch(e => {
-            console.log('Error deleting user')
+            console.log('Error deleting user.')
         })
     }
 
@@ -30,9 +30,8 @@ export function DeleteUser() {
             <Button className='float-right' variant="danger" onClick={handleShow}>
                 Delete User
             </Button>
-
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title>Delete User?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
