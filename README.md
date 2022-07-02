@@ -21,3 +21,4 @@ Access the web app here:
 ### Current Issues
 
 - Refreshing in any of the Movie, Director, Genre Views will likely only result in an error (mainly due to how the routing is set up).
+- Currently there are no movie images (currently trying to figure a way to get images going, likely will try to host images somewhere and using that as a link)
