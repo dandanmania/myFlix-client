@@ -12,7 +12,7 @@ export class MovieCard extends React.Component {
         return (
             <>
                 <img src={movie.ImagePath} id={movie._id} className='card-image-topper'></img>
-                <Card className="bg-dark text-white m-2 p-2 fixed-height" border="dark">
+                <Card className="bg-dark text-white m-2 p-2 fixed-height card-details-bordering" border="dark">
                     <Card.Body className="d-flex flex-column">
                         <Card.Title>{movie.Title}</Card.Title>
                         <Link className="mt-auto mr-auto" to={`/movies/${movie._id}`}>
