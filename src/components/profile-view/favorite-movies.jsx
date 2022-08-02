@@ -32,18 +32,15 @@ export function FavoriteMovies(props) {
                     return (
                         <>
                             <Col className="m-1" md={4}>
-                            <Card className="bg-dark text-white m-2 p-2 fixed-height" border="dark">
-                                <Card.Img variant="top" src={movie.ImagePath} />
-                                <Card.Body className="d-flex flex-column">
-                                <Card.Title>{movie.Title}</Card.Title>
-                                <Row className="mt-auto">
-                                <Link className="ml-2 mr-auto" to={`/movies/${movie._id}`}>
-                                    <Button variant="link">Open</Button>
-                                </Link>
-                                <Button className="mr-4 btn-danger" onClick={() => deleteMovie(movie._id) }>Delete Favorite</Button>
-                                </Row>
-                                </Card.Body>
-                            </Card>
+                                <img src={movie.ImagePath} id={movie._id} className='card-image-topper'></img>
+                                <Card className="bg-dark text-white p-2 fixed-height card-details-bordering" border="dark">
+                                    <Card.Body className="d-flex flex-column">
+                                        <Card.Title>{movie.Title}</Card.Title>
+                                        <Link className="mt-auto mr-auto" to={`/movies/${movie._id}`}>
+                                            <Button variant="link">Open</Button>
+                                        </Link>
+                                    </Card.Body>
+                                </Card>
                             </Col>
                         </>                
                         )
