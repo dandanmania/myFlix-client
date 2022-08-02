@@ -52,7 +52,7 @@ export class MovieView extends React.Component{
                 </Row>
                 <Col>
                     <ListGroup variant="flush">
-                        <ListGroup.Item className='movie-img'><img src={movie.ImagePath} /></ListGroup.Item>
+                        <ListGroup.Item><img src={movie.ImagePath} /></ListGroup.Item>
                         <ListGroup.Item>Title: {movie.Title}</ListGroup.Item>
                         <ListGroup.Item>Description: {movie.Description}</ListGroup.Item>
                         <ListGroup.Item>
