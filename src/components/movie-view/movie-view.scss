@@ -8,5 +8,10 @@
 
 .movie-img {
     width: 100%;
+    max-width: fit-content;
     text-align: center;
+}
+
+.movie-img > img {
+    width: -webkit-fill-available;
 }
