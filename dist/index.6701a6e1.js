@@ -45275,94 +45275,93 @@ function FavoriteMovies(props) {
             children: "There are no favorites here"
         }) : filteredFavorites.map((movie)=>{
             return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
-                children: [
-                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                        className: "m-1",
-                        md: 4,
-                        __source: {
-                            fileName: "src/components/profile-view/favorite-movies.jsx",
-                            lineNumber: 34
-                        },
-                        __self: this,
-                        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
-                            className: "bg-dark text-white m-2 p-2 fixed-height",
-                            border: "dark",
+                children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Col, {
+                    className: "m-1",
+                    md: 4,
+                    __source: {
+                        fileName: "src/components/profile-view/favorite-movies.jsx",
+                        lineNumber: 34
+                    },
+                    __self: this,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx("img", {
+                            src: movie.ImagePath,
+                            id: movie._id,
+                            className: "card-image-topper",
                             __source: {
                                 fileName: "src/components/profile-view/favorite-movies.jsx",
                                 lineNumber: 35
                             },
+                            __self: this
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
+                            className: "bg-dark text-white p-2 fixed-height card-details-bordering",
+                            border: "dark",
+                            __source: {
+                                fileName: "src/components/profile-view/favorite-movies.jsx",
+                                lineNumber: 36
+                            },
                             __self: this,
-                            children: [
-                                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
-                                    variant: "top",
-                                    src: movie.ImagePath,
-                                    __source: {
-                                        fileName: "src/components/profile-view/favorite-movies.jsx",
-                                        lineNumber: 36
-                                    },
-                                    __self: this
-                                }),
-                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
-                                    className: "d-flex flex-column",
-                                    __source: {
-                                        fileName: "src/components/profile-view/favorite-movies.jsx",
-                                        lineNumber: 37
-                                    },
-                                    __self: this,
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
-                                            __source: {
-                                                fileName: "src/components/profile-view/favorite-movies.jsx",
-                                                lineNumber: 38
-                                            },
-                                            __self: this,
-                                            children: movie.Title
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
-                                            className: "mt-auto",
-                                            __source: {
-                                                fileName: "src/components/profile-view/favorite-movies.jsx",
-                                                lineNumber: 39
-                                            },
-                                            __self: this,
-                                            children: [
-                                                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                                    className: "ml-2 mr-auto",
-                                                    to: `/movies/${movie._id}`,
+                            children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
+                                className: "d-flex flex-column",
+                                __source: {
+                                    fileName: "src/components/profile-view/favorite-movies.jsx",
+                                    lineNumber: 37
+                                },
+                                __self: this,
+                                children: [
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
+                                        __source: {
+                                            fileName: "src/components/profile-view/favorite-movies.jsx",
+                                            lineNumber: 38
+                                        },
+                                        __self: this,
+                                        children: movie.Title
+                                    }),
+                                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
+                                        className: "mt-auto",
+                                        __source: {
+                                            fileName: "src/components/profile-view/favorite-movies.jsx",
+                                            lineNumber: 39
+                                        },
+                                        __self: this,
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                                className: "ml-2 mr-auto",
+                                                to: `/movies/${movie._id}`,
+                                                __source: {
+                                                    fileName: "src/components/profile-view/favorite-movies.jsx",
+                                                    lineNumber: 40
+                                                },
+                                                __self: this,
+                                                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                                    variant: "link",
                                                     __source: {
                                                         fileName: "src/components/profile-view/favorite-movies.jsx",
-                                                        lineNumber: 40
+                                                        lineNumber: 41
                                                     },
                                                     __self: this,
-                                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                                        variant: "link",
-                                                        __source: {
-                                                            fileName: "src/components/profile-view/favorite-movies.jsx",
-                                                            lineNumber: 41
-                                                        },
-                                                        __self: this,
-                                                        children: "Open"
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                                    className: "mr-4 btn-danger",
-                                                    onClick: ()=>deleteMovie(movie._id)
-                                                    ,
-                                                    __source: {
-                                                        fileName: "src/components/profile-view/favorite-movies.jsx",
-                                                        lineNumber: 43
-                                                    },
-                                                    __self: this,
-                                                    children: "Delete Favorite"
+                                                    children: "Open"
                                                 })
-                                            ]
-                                        })
-                                    ]
-                                })
-                            ]
+                                            }),
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                                className: "mr-4 btn-danger",
+                                                onClick: ()=>deleteMovie(movie._id)
+                                                ,
+                                                __source: {
+                                                    fileName: "src/components/profile-view/favorite-movies.jsx",
+                                                    lineNumber: 43
+                                                },
+                                                __self: this,
+                                                children: "Delete Favorite"
+                                            })
+                                        ]
+                                    })
+                                ]
+                            })
                         })
-                    })
-                ]
+                    ]
+                })
             }));
         })
     }));
@@ -48149,7 +48148,7 @@ class MovieCard extends _reactDefault.default.Component {
                     __self: this
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default, {
-                    className: "bg-dark text-white m-2 p-2 fixed-height",
+                    className: "bg-dark text-white p-2 fixed-height card-details-bordering",
                     border: "dark",
                     __source: {
                         fileName: "src/components/movie-card/movie-card.jsx",

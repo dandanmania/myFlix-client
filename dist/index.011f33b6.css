@@ -21,9 +21,13 @@ input {
 }
 
 .movie-img {
-  width: 10rem;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  max-width: fit-content;
+  text-align: center;
+}
+
+.movie-img > img {
+  width: -webkit-fill-available;
 }
 #alertrow {
   z-index: 5;
@@ -41,19 +45,35 @@ input {
 }
 .fixed-height {
   height: 14rem;
+  margin-top: 0;
 }
 
 .card-image-topper {
-  height: 200px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 8px;
+  padding-right: 8px;
   object-fit: cover;
-  object-position: 50% -200%;
+  object-position: center;
+  width: inherit;
+  height: 10rem;
+}
+
+.card-details-bordering {
+  border-radius: 0 0 0.25rem 0.25rem !important;
+  margin-top: 0 !important;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 .searchcolor {
   background-color: rgba(191, 166, 83, 0.65) !important;
 }
 .my-flix {
   color: steelblue;
+}
+
+.alert {
+  position: fixed !important;
 }
 /*# sourceMappingURL=index.011f33b6.css.map */
