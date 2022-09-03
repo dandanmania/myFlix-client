@@ -22,5 +22,12 @@ https://dandan-myflix.netlify.app/
 
 ### Current Issues
 
-- Refreshing in any of the Movie, Director, Genre Views will likely only result in an error (mainly due to how the routing is set up).
-- Currently there are no movie images (currently trying to figure a way to get images going, likely will try to host images somewhere and using that as a link)
+- Refreshing in any of the Movie, Director, Genre Views will usually only result in an error (mainly due to how the routing is set up).
+
+### Set Up
+
+- Clone this repository
+- Run `npm install`
+- If you clone this repository and wished to use parcel to build this app, be sure to go into package.json and change:
+  `"default": index.js` to `"main": src/index.html`. This was changed for the live version of the app.
+- Run `parcel src/index.html` to run it locally.
