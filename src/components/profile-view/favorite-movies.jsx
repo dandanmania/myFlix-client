@@ -11,7 +11,7 @@ export function FavoriteMovies(props) {
     })
 
     const deleteMovie = (movieId) => {
-        axios.delete(`https://dandan-myflix.herokuapp.com/users/${loggedUser.Username}/movies/${movieId}`, {
+        axios.delete(`https://dandanmania-movieapi.cyclic.app/users/${loggedUser.Username}/movies/${movieId}`, {
             headers: { Authorization: `Bearer ${token}`}
         }).then(() => {
             var invisibility = document.getElementById('alertrow');

@@ -22,7 +22,7 @@ export function ProfileView(props){
     const token = localStorage.getItem('token');
 
     const logUser = () => {
-        axios.get(`https://dandan-myflix.herokuapp.com/users/${loggedUser}`, {
+        axios.get(`https://dandanmania-movieapi.cyclic.app/users/${loggedUser}`, {
             headers: { Authorization: `Bearer ${token}`}
         }).then(response => {
             setUser(response.data);
@@ -32,7 +32,7 @@ export function ProfileView(props){
     }
 
     const fetchMovies = () => {
-        axios.get('https://dandan-myflix.herokuapp.com/movies', {
+        axios.get('https://dandanmania-movieapi.cyclic.app/movies', {
             headers: { Authorization: `Bearer ${token}`}
         }).then(response => {
             setMovies(response.data);

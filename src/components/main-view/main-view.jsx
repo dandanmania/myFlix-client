@@ -76,9 +76,9 @@ class MainView extends React.Component {
     }
 
     getMovies(token) {
-        let movieLink = "https://dandan-myflix.herokuapp.com/movies"
-        let directorsLink = "https://dandan-myflix.herokuapp.com/directors"
-        let genreLink = "https://dandan-myflix.herokuapp.com/genre"
+        let movieLink = "https://dandanmania-movieapi.cyclic.app/movies"
+        let directorsLink = "https://dandanmania-movieapi.cyclic.app/directors"
+        let genreLink = "https://dandanmania-movieapi.cyclic.app/genre"
 
         const requestMovies = axios.get(movieLink, {
             headers: { Authorization: `Bearer ${token}`}

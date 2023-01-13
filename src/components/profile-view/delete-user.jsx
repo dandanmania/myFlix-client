@@ -11,7 +11,7 @@ export function DeleteUser() {
         setShow(false);
         let token = localStorage.getItem('token');
         let user = localStorage.getItem('user');
-        axios.delete(`https://dandan-myflix.herokuapp.com/users/${user}`, {
+        axios.delete(`https://dandanmania-movieapi.cyclic.app/users/${user}`, {
             headers: { Authorization: `Bearer ${token}`}
         }).then(response => {
             const data = response.data;

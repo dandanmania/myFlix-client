@@ -39,7 +39,7 @@ export function LoginView(props) {
         e.preventDefault();
         const isReq = validate();
         if(isReq) {
-        axios.post('https://dandan-myflix.herokuapp.com/login', {
+        axios.post('https://dandanmania-movieapi.cyclic.app/login', {
             Username: username,
             Password: password
         })

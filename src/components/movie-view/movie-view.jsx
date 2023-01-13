@@ -22,7 +22,7 @@ export class MovieView extends React.Component{
         const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         
-        axios.post(`https://dandan-myflix.herokuapp.com/users/${user}/movies/${movie._id}`, {}, {
+        axios.post(`https://dandanmania-movieapi.cyclic.app/users/${user}/movies/${movie._id}`, {}, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(response => {
             var invisibility = document.getElementById('addrow');

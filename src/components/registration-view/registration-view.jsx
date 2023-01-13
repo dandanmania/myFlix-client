@@ -55,7 +55,7 @@ export function RegistrationView(props) {
         e.preventDefault();
         const isReq = validate();
         if(isReq) {
-        axios.post('https://dandan-myflix.herokuapp.com/users/', {
+        axios.post('https://dandanmania-movieapi.cyclic.app/users/', {
             Username: username,
             Password: password,
             Email: email,

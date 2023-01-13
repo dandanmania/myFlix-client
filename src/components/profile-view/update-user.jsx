@@ -56,7 +56,7 @@ export function UpdateUser(props) {
         e.preventDefault();
         const isReq = validate();
         if(isReq) {
-        axios.put(`https://dandan-myflix.herokuapp.com/users/${user}`, {
+        axios.put(`https://dandanmania-movieapi.cyclic.app/users/${user}`, {
             Username: username,
             Password: password,
             Email: email,
